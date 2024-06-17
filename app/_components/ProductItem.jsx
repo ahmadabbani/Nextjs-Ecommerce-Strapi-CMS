@@ -5,7 +5,7 @@ import React from "react";
 
 function ProductItem({ item }) {
   const imageUrl = item?.attributes?.img?.data?.attributes?.formats.small.url;
-  const strapiHost = "https://strapi-sqlite-yh3g.onrender.com";
+  const strapiHost = "https://strapi-ecommerce-db.onrender.com";
   // Construct the full image URL
   const fullImageUrl = `${strapiHost}${imageUrl}`;
 
