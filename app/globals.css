@@ -1,0 +1,23 @@
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.slick-slide>div {
+  margin: 0 20px;/* Position the previous arrow */
+}
+
+.slick-slide>div:nth-child(1) {
+ margin-left: 0; /* Position the next arrow */
+}
+
+.slick-list {
+margin-right: -20px;
+}
+
+
