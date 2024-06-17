@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./_components/CheckoutForm";
@@ -21,4 +21,13 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+// Wrap the Checkout component with Suspense
+function CheckoutWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Checkout />
+    </Suspense>
+  );
+}
+
+export default CheckoutWrapper;
