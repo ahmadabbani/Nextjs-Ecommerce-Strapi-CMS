@@ -2,7 +2,7 @@
 import "./globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import ContactUs from "./_components/ContactUs";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CartContext } from "./_context/CartContext";
 import React, { useState } from "react";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
               </nav>
               <main>{children}</main>
               <section>
-                <Footer />
+                <ContactUs />
               </section>
             </ChakraProvider>
           </body>

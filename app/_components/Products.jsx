@@ -13,10 +13,8 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
+  Spinner,
+  Skeleton,
 } from "@chakra-ui/react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
@@ -135,8 +133,11 @@ function Products() {
 
   return (
     <>
-      <Flex gap={6}>
-        <Flex p={4} gap={3}>
+      <Heading pt={16} pb={6} pl={4}>
+        Trending Now
+      </Heading>
+      <Flex gap={6} id="products">
+        <Flex pl={4} gap={3}>
           <Button
             onClick={() => {
               resetSlider();
@@ -178,11 +179,11 @@ function Products() {
             Kids
           </Button>
         </Flex>
-        <Box p={4}>
+        <Box>
           <Menu>
             <MenuButton
               as={Button}
-              bgColor="blue.300"
+              bgColor="orange"
               rightIcon={<RiArrowDownSLine />}
             >
               <strong>
@@ -237,16 +238,26 @@ function Products() {
       {products.length ? (
         <>
           <Box>
-            <Heading p={4} display="block" position="relative" w="fit-content">
+            <Heading
+              px={4}
+              pt={8}
+              pb={3}
+              fontSize={{ base: "20px", sm: "25px", md: "30px", lg: "35px" }}
+              display="block"
+              position="relative"
+              w="fit-content"
+              color="gray"
+              fontWeight="900"
+            >
               {category}
               <div
                 style={{
                   position: "absolute",
                   backgroundColor: categoryBackgroundColor,
                   borderRadius: "2px",
-                  height: "70%",
+                  height: "50%",
                   width: "80%",
-                  top: "50%",
+                  top: "60%",
                   left: "50%",
                   transform: "translateY(-50%)",
                   zIndex: "-1",
@@ -258,12 +269,21 @@ function Products() {
           </Box>
         </>
       ) : (
-        <Flex justify="space-evenly">
-          {" "}
-          <ProductItemSkeleton />
-          <ProductItemSkeleton />
-          <ProductItemSkeleton />
-        </Flex>
+        <>
+          <Skeleton
+            w="120px"
+            h="25px"
+            mt={{ base: 6, lg: 12 }}
+            ml={4}
+            mb={4}
+          ></Skeleton>
+          <Flex justify="space-between">
+            <ProductItemSkeleton />
+            <ProductItemSkeleton />
+            <ProductItemSkeleton />
+            <ProductItemSkeleton />
+          </Flex>
+        </>
       )}
     </>
   );

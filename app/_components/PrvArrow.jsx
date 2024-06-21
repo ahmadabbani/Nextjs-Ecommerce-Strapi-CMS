@@ -9,9 +9,9 @@ function PrvArrow({ onClick }) {
       onClick={onClick}
       position="absolute"
       top="-15%"
-      right="65px"
+      right={{ base: "55px", md: "65px" }}
       borderRadius="50%"
-      boxSize={{ base: 5, md: 6, lg: 8 }}
+      boxSize={{ base: 6, md: 8 }}
       cursor="pointer"
       color="black"
       border="2px"

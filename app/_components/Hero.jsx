@@ -3,49 +3,57 @@ import React from "react";
 
 function Hero() {
   return (
-    <Flex h="85vh" bgGradient="linear(to-r, blue.200, orange.500)" pl={4}>
-      <Flex flexBasis="50%" direction="column" align="center" justify="center">
-        <Heading fontSize="55px">
-          Unlock Your{" "}
+    <Flex h="85vh" position="relative">
+      <Box
+        pt={6}
+        position="absolute"
+        left="0"
+        top="0"
+        bottom="0"
+        w="full"
+        h="auto"
+      >
+        <Heading fontSize="35px" pl={4} pt={10}>
+          {" "}
+          UNLOCK
+        </Heading>
+        <Heading fontSize="50px" pl={12} pt={10}>
+          {" "}
+          YOUR
+        </Heading>
+        <Heading fontSize="65px" pl={20} pt={10}>
           <Box
             display="inline"
             w="fit-content"
-            bgGradient="linear(to-r, orange.500, blue.500)"
+            bgGradient="linear(to-r, black, gray.300)"
             bgClip="text"
           >
             Style
           </Box>
         </Heading>
-        <Text
-          mt={10}
-          mb={5}
-          textAlign="center"
-          color="gray.6
-        00"
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus eaque
-          in corporis magni commodi repellendus soluta aliquid accusamus
-          dignissimos sed eligendi, perferendis molestias aperiam nemo?
-        </Text>
         <Button
-          variant="outline"
-          bg="black"
+          bgColor="black"
           color="white"
           size={{ base: "sm", sm: "md", md: "lg" }}
-          border="1px"
           borderRadius={0}
-          borderColor="black"
+          fontWeight="700"
+          ml={12}
+          mt={12}
           _hover={{
-            opacity: "0.8",
+            opacity: "0.9",
           }}
         >
-          <Box bgGradient="linear(to-r, blue.300, orange.400)" bgClip="text">
-            SHOP NOW
-          </Box>
+          SHOP NOW
         </Button>
-      </Flex>
-      <Box flexBasis="50%">
-        <Image src="/hero.jpg" alt="hero" w="100%" maxW="100%" h="100%" />
+      </Box>
+      <Box flexBasis="100%">
+        <Image
+          src="/hero31.jpg"
+          alt="hero"
+          h="100%"
+          w="full"
+          objectFit="cover"
+        />
       </Box>
     </Flex>
   );

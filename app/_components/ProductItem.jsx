@@ -1,7 +1,7 @@
 "use client";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import Link from "next/link";
 import React from "react";
+import ProductItemSkeleton from "./ProductItemSkeleton";
 
 function ProductItem({ item }) {
   const imageUrl = item?.attributes?.img?.data?.attributes?.formats.small.url;
@@ -18,7 +18,7 @@ function ProductItem({ item }) {
         src={fullImageUrl}
         alt={item?.attributes?.title}
       />
-      <Text mt={2}>
+      <Text mt={2} fontSize={{ base: "14px", md: "16px" }}>
         <strong>{item?.attributes?.title}</strong>
       </Text>
       <Flex justify="space-between">

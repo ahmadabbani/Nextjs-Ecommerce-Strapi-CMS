@@ -4,7 +4,7 @@ import React from "react";
 function ProductImg({ productImg }) {
   const imageUrl =
     productImg.attributes?.img.data.attributes.formats.medium.url;
-  const strapiHost = "https://strapi-sqlite-yh3g.onrender.com";
+  const strapiHost = "https://strapi-ecommerce-db.onrender.com";
   // Construct the full image URL
   const fullImageUrl = `${strapiHost}${imageUrl}`;
   return (
@@ -14,11 +14,18 @@ function ProductImg({ productImg }) {
           src={fullImageUrl}
           alt={productImg.attributes?.title}
           borderRadius="12px"
-          w="500px"
-          h="400px"
+          mx="auto"
+          w={{ base: "300px", sm: "400px", md: "500px" }}
+          h={{ base: "250px", sm: "300px", md: "400px" }}
+          objectFit="cover"
         />
       ) : (
-        <Skeleton w="500px" h="400px" borderRadius="12px" />
+        <Skeleton
+          w={{ base: "300px", sm: "400px", md: "500px" }}
+          h={{ base: "250px", sm: "300px", md: "400px" }}
+          borderRadius="12px"
+          mx="auto"
+        />
       )}
     </>
   );

@@ -63,7 +63,7 @@ function ProductInfo({ productInfo }) {
     <>
       {productInfo.attributes ? (
         <Box p={8}>
-          <Box mb={5}>
+          <Box mb={{ base: 2, sm: 3, md: 6 }}>
             <Heading fontSize={{ base: "20px", sm: "30px", md: "50px" }}>
               {productInfo.attributes?.title}
             </Heading>
@@ -98,7 +98,10 @@ function ProductInfo({ productInfo }) {
               </Box>
             )}
 
-            <Text mb={6} fontSize={{ base: "20px", sm: "25px" }}>
+            <Text
+              mb={{ base: 3, sm: 4, md: 8 }}
+              fontSize={{ base: "20px", sm: "25px" }}
+            >
               <strong>${productInfo.attributes?.price}</strong>
             </Text>
             <Button
@@ -106,10 +109,10 @@ function ProductInfo({ productInfo }) {
               display="flex"
               gap={2}
               colorScheme="orange"
-              size={{ base: "md", md: "lg" }}
+              size={{ base: "md", lg: "lg" }}
             >
               {" "}
-              <Icon as={FaShoppingCart} boxSize={{ base: "5", md: "6" }} />
+              <Icon as={FaShoppingCart} boxSize={{ base: "5", lg: "6" }} />
               Add To Cart
             </Button>
           </Box>

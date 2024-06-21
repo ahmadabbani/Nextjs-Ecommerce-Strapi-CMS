@@ -5,7 +5,7 @@ function ProductItemSkeleton() {
   return (
     <Box borderRadius="12px" px={3} py={2}>
       <Skeleton
-        width="250px"
+        width={{ base: "150px", md: "200px", lg: "250px" }}
         height={{ base: "150px", md: "250px" }}
         mx="auto"
         borderRadius="12px"

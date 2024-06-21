@@ -20,7 +20,7 @@ import { CiTrash } from "react-icons/ci";
 function CartPage() {
   const router = useRouter();
   const { cart, setCart } = useContext(CartContext);
-  const strapiHost = "https://strapi-sqlite-yh3g.onrender.com";
+  const strapiHost = "https://strapi-ecommerce-db.onrender.com";
   const { user } = useUser();
   //total amount
   const getTotalAmount = () => {

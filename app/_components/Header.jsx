@@ -6,6 +6,10 @@ import {
   Icon,
   Image,
   ListItem,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
@@ -16,6 +20,7 @@ import Link from "next/link";
 import { CartContext } from "app/_context/CartContext";
 import productsApi from "app/utils/productsApi";
 import Cart from "./Cart";
+import { RiArrowDownSLine } from "react-icons/ri";
 function Header() {
   const { cart, setCart } = useContext(CartContext);
   const { user } = useUser();
@@ -48,19 +53,118 @@ function Header() {
           display="flex"
           gap={{ base: "4", sm: "6" }}
           listStyleType="none"
+          alignItems="center"
+          fontWeight="700"
         >
-          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="orange">
+          <Button
+            as={Link}
+            href="/"
+            bgColor="transparent"
+            fontSize={{ base: "15px", sm: "20px" }}
+            color="black"
+            fontWeight="700"
+            size={{ base: "sm", md: "md" }}
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
+          >
             Home
+          </Button>
+          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="black">
+            <Menu>
+              <MenuButton
+                as={Button}
+                bgColor="transparent"
+                fontSize={{ base: "15px", sm: "20px" }}
+                color="black"
+                fontWeight="700"
+                size={{ base: "sm", md: "md" }}
+                rightIcon={<RiArrowDownSLine />}
+                _hover={{
+                  bg: "black",
+                  color: "white",
+                }}
+              >
+                Products
+              </MenuButton>
+              <MenuList
+                borderRadius="12px"
+                border="none"
+                boxShadow="3px 3px 12px rgba(0, 0, 0, 0.35)"
+              >
+                <MenuItem
+                  as={Link}
+                  href="#products"
+                  _hover={{
+                    bg: "black",
+                    color: "white",
+                  }}
+                  color="black"
+                  onClick={() => {}}
+                  fontSize={{ base: "15px", sm: "20px" }}
+                >
+                  <strong>For Women</strong>
+                </MenuItem>
+                <MenuItem
+                  as={Link}
+                  href="#products"
+                  _hover={{
+                    bg: "black",
+                    color: "white",
+                  }}
+                  color="black"
+                  onClick={() => {}}
+                  fontSize={{ base: "15px", sm: "20px" }}
+                >
+                  <strong>For Men</strong>
+                </MenuItem>
+                <MenuItem
+                  as={Link}
+                  href="#products"
+                  _hover={{
+                    bg: "black",
+                    color: "white",
+                  }}
+                  color="black"
+                  onClick={() => {}}
+                  fontSize={{ base: "15px", sm: "20px" }}
+                >
+                  <strong>For Kids</strong>
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </ListItem>
-          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="orange">
-            Products
-          </ListItem>
-          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="orange">
+          <Button
+            as={Link}
+            href="/"
+            bgColor="transparent"
+            fontSize={{ base: "15px", sm: "20px" }}
+            size={{ base: "sm", md: "md" }}
+            color="black"
+            fontWeight="700"
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
+          >
             About Us
-          </ListItem>
-          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="orange">
-            Contact Us
-          </ListItem>
+          </Button>
+          <Button
+            as={Link}
+            href="#contact"
+            bgColor="transparent"
+            fontSize={{ base: "15px", sm: "20px" }}
+            size={{ base: "sm", md: "md" }}
+            color="black"
+            fontWeight="700"
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
+          >
+            Contact
+          </Button>
         </UnorderedList>
       </Flex>
       {!user ? (
@@ -69,7 +173,12 @@ function Header() {
             as={Link}
             href="/sign-in"
             size={{ base: "sm", sm: "md" }}
-            colorScheme="cyan"
+            color="white"
+            bg="black"
+            fontWeight="700"
+            _hover={{
+              bg: "gray.700",
+            }}
           >
             Sign In
           </Button>
@@ -77,7 +186,12 @@ function Header() {
             as={Link}
             href="/sign-up"
             size={{ base: "sm", sm: "md" }}
-            colorScheme="cyan"
+            color="white"
+            bg="black"
+            fontWeight="700"
+            _hover={{
+              bg: "gray.700",
+            }}
           >
             Sign Up
           </Button>
@@ -111,7 +225,7 @@ function Header() {
               {cart?.length}
             </Text>
 
-            <Box position="absolute" top="100%" right="80%">
+            <Box position="absolute" top="100%" right="80%" zIndex={1}>
               {cartOpen && <Cart />}
             </Box>
           </Box>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import productsApi from "app/utils/productsApi";
 import ProductImg from "../_components/ProductImg";
 import ProductInfo from "../_components/ProductInfo";
-import { Box, Flex, Heading, Skeleton } from "@chakra-ui/react";
+import { Box, Flex, Heading, Skeleton, SkeletonText } from "@chakra-ui/react";
 import BreadCrumb from "app/_components/BreadCrumb";
 import ProductList from "app/_components/ProductList";
 import { usePathname } from "next/navigation";
@@ -43,27 +43,40 @@ function ProductDetails({ params }) {
         <BreadCrumb path={path} />
       </Box>
 
-      <Flex
-        py={5}
-        flexDirection={{ base: "column", md: "row" }}
-        justifyContent="space-evenly"
-      >
-        <ProductImg productImg={productDetails} />
+      <Flex pt={5} flexDirection={{ base: "column", md: "row" }}>
+        <Box flexBasis="50%">
+          <ProductImg productImg={productDetails} />
+        </Box>
 
-        <ProductInfo productInfo={productDetails} />
+        <Box flexBasis="50%">
+          <ProductInfo productInfo={productDetails} />
+        </Box>
       </Flex>
 
-      <Box mt={6}>
-        <Heading p={4}>More for {productDetails.attributes?.category} </Heading>{" "}
+      <Box mt={{ base: 2, md: 6, lg: 12 }} id="similars">
         {recommendedProducts.length ? (
-          <ProductList products={recommendedProducts} />
+          <>
+            <Heading p={4}>
+              More for {productDetails?.attributes?.category}
+            </Heading>
+            <ProductList products={recommendedProducts} />
+          </>
         ) : (
-          <Flex>
-            {" "}
-            <ProductItemSkeleton />
-            <ProductItemSkeleton />
-            <ProductItemSkeleton />
-          </Flex>
+          <>
+            <Skeleton
+              w="120px"
+              h="25px"
+              mt={{ base: 2, md: 6, lg: 12 }}
+              ml={4}
+              mb={4}
+            ></Skeleton>
+            <Flex justify="space-between">
+              <ProductItemSkeleton />
+              <ProductItemSkeleton />
+              <ProductItemSkeleton />
+              <ProductItemSkeleton />
+            </Flex>
+          </>
         )}
       </Box>
     </Box>

@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -14,7 +14,27 @@ function ProductList({ products, sliderKey }) {
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 5, // large desktop
+    responsive: [
+      {
+        breakpoint: 1024, // desktop
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 768, // Tablet
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480, // Mobile
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
     slidesToScroll: 1,
     initialSlide: 0,
     nextArrow: <NextArrow />,
@@ -24,7 +44,12 @@ function ProductList({ products, sliderKey }) {
   return (
     <>
       {products.length ? (
-        <div style={{ position: "relative", marginLeft: "20px" }}>
+        <div
+          style={{
+            position: "relative",
+            marginLeft: "20px",
+          }}
+        >
           <Slider key={sliderKey} {...settings}>
             {products.map((item, index) => (
               <Box

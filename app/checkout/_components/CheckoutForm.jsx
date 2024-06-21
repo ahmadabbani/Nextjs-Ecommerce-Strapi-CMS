@@ -1,7 +1,7 @@
 "use client";
 import { CartContext } from "@/app/_context/CartContext";
 import productsApi from "@/app/utils/productsApi";
-import { useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, useToast } from "@chakra-ui/react";
 import { useUser } from "@clerk/nextjs";
 import {
   PaymentElement,
@@ -55,7 +55,7 @@ const CheckoutForm = ({ amount }) => {
       clientSecret: clientSecret,
       elements,
       confirmParams: {
-        return_url: "",
+        return_url: "https://strapi-ecommerce-db.onrender.com/paymentConfirm",
       },
     });
 
@@ -91,11 +91,31 @@ const CheckoutForm = ({ amount }) => {
       }
     });
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button>Submit</button>
-    </form>
+    <Flex direction="column" justify="center">
+      <Heading py={12} pl="80px">
+        Please Fill Out Payment Information
+      </Heading>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          padding: "0 80px",
+        }}
+      >
+        <PaymentElement className="payment-element" />
+        <Button
+          type="submit"
+          bgColor="green"
+          color="white"
+          borderRadius="0"
+          mt={4}
+          _hover={{ opacity: "0.8" }}
+        >
+          Place Order
+        </Button>
+      </form>
+    </Flex>
   );
 };
 

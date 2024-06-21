@@ -11,7 +11,7 @@ function NextArrow({ onClick }) {
       top="-15%"
       right="20px"
       borderRadius="50%"
-      boxSize={{ base: 5, md: 6, lg: 8 }}
+      boxSize={{ base: 6, md: 8 }}
       cursor="pointer"
       color="black"
       border="2px"
