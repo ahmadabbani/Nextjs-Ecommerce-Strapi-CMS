@@ -25,6 +25,7 @@ function Cart() {
       bgColor="white"
       boxShadow="0px 4px 8px rgba(0, 0, 0, 0.1), 0px -4px 8px rgba(0, 0, 0, 0.1)"
       p={5}
+      zIndex={200}
       overflow="auto"
       sx={{
         "&::-webkit-scrollbar": {
@@ -43,12 +44,18 @@ function Cart() {
       }}
     >
       {cart?.length === 0 ? (
-        <Flex direction="column" h="full" justify="center" align="center">
+        <Flex
+          direction="column"
+          h="full"
+          justify="center"
+          align="center"
+          zIndex={200}
+        >
           <Heading fontSize={{ base: "16px", sm: "20px", lg: "23px" }}>
             Cart is currently empty.
           </Heading>
           <Link
-            href="#similars"
+            href="/"
             fontSize="14px"
             color="gray.600"
             w="full"
@@ -97,7 +104,7 @@ function Cart() {
             View my cart ({cart?.length})
           </Button>
           <Link
-            href="#similars"
+            href="/"
             color="gray.600"
             w="full"
             fontWeight="500"

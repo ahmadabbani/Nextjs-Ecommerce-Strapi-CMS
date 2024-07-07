@@ -55,7 +55,7 @@ function CartPage() {
               <Heading textAlign="center" pt={6}>
                 Your Cart
               </Heading>
-              <Box w="full" px={20} py={10}>
+              <Box w="full" px={{ base: 2, sm: 20 }} py={10}>
                 {cart?.map((item, index) => (
                   <React.Fragment key={index}>
                     <Flex justify="space-between" align="center">
@@ -112,11 +112,8 @@ function CartPage() {
             </>
           ) : (
             <Flex
-              height="100vh"
+              height="50vh"
               width="100vw"
-              position="fixed"
-              top="0"
-              left="0"
               zIndex="9999"
               alignItems="center"
               justifyContent="center"
@@ -129,11 +126,8 @@ function CartPage() {
         </>
       ) : (
         <Flex
-          height="100vh"
+          height="50vh"
           width="100vw"
-          position="fixed"
-          top="0"
-          left="0"
           zIndex="9999"
           alignItems="center"
           justifyContent="center"

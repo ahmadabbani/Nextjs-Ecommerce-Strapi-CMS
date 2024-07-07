@@ -136,8 +136,8 @@ function Products() {
       <Heading pt={16} pb={6} pl={4}>
         Trending Now
       </Heading>
-      <Flex gap={6} id="products">
-        <Flex pl={4} gap={3}>
+      <Flex gap={6} id="products" flexWrap="wrap">
+        <Flex pl={4} gap={3} flexWrap="wrap">
           <Button
             onClick={() => {
               resetSlider();

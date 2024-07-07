@@ -94,10 +94,15 @@ const CheckoutForm = ({ amount }) => {
 
   return (
     <Flex direction="column" justify="center">
-      <Heading py={12} pl="80px">
+      <Heading
+        py={{ base: 6, sm: 8, md: 12 }}
+        textAlign="center"
+        fontSize={{ base: "18px", sm: "20px", md: "30px" }}
+      >
         Please Fill Out Payment Information
       </Heading>
       <form
+        id="checkoutfrom"
         onSubmit={handleSubmit}
         style={{
           padding: "0 80px",

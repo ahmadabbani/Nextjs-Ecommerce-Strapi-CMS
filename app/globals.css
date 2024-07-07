@@ -15,6 +15,61 @@ body {
   background-color: red;
 }
 
+/*header*/
+.header .nav-toggle{
+  display: none;
+}
+
+@media screen and (max-width: 767.98px){
+
+  .header .nav-menu{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 100px;
+      background-color:rgb(255, 255, 255);
+      z-index: 100;
+      display: flex;
+      opacity: 0;
+      justify-content: center;
+      align-items: start;
+      transform: translateX(-100%);
+      transition: all 0.5s ease;
+      
+  }
+
+  .header .show-menu{
+      transform: translateX(0);
+      opacity: 1;
+  }
+
+  .header .show-menu .nav-list-left{
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  .header .nav-list{
+      flex-direction: column;
+      row-gap: 2.3rem;
+      text-align: center;
+  }
+
+  .header .nav-list .list{
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .header .nav-toggle{
+      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 101;
+  }
+  
+}
+
 .slick-slide>div {
   margin: 0 20px;/* Position the previous arrow */
 }
@@ -31,5 +86,17 @@ margin-right: -20px;
 .payment-element {
   border: 1px solid #ccc;
   padding: 25px;
+}
+
+@media screen and (max-width: 865px){
+  .hero-flex{
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 550px){
+  #checkoutfrom{
+    padding: 0 10px !important;
+  }
 }
 

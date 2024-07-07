@@ -21,6 +21,9 @@ import { CartContext } from "app/_context/CartContext";
 import productsApi from "app/utils/productsApi";
 import Cart from "./Cart";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { FiMenu } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
+import "../globals.css";
 function Header() {
   const { cart, setCart } = useContext(CartContext);
   const { user } = useUser();
@@ -45,128 +48,164 @@ function Header() {
       });
   };
 
+  const [showMenu, setShowMenu] = useState(false);
+  const handleToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <Flex justify="space-between" p={4}>
-      <Flex gap={{ base: "3", sm: "4", md: "6" }} align="center">
-        <Image src="/logo.svg" alt="logo" />
-        <UnorderedList
-          display="flex"
-          gap={{ base: "4", sm: "6" }}
-          listStyleType="none"
-          alignItems="center"
-          fontWeight="700"
-        >
-          <Button
-            as={Link}
-            href="/"
-            bgColor="transparent"
-            fontSize={{ base: "15px", sm: "20px" }}
-            color="black"
-            fontWeight="700"
-            size={{ base: "sm", md: "md" }}
-            _hover={{
-              bg: "black",
-              color: "white",
-            }}
+    <Flex p={4} className="header" id="header" justify="space-between">
+      <Box
+        id="nav-menu"
+        className={`nav-menu ${showMenu ? "show-menu" : ""}`}
+        w="full"
+      >
+        <Flex justify="space-between" alignItems="center" className="nav-list">
+          <Flex
+            gap={{ base: "3", sm: "4", md: "6" }}
+            align="center"
+            className="nav-list-left"
           >
-            Home
-          </Button>
-          <ListItem fontSize={{ base: "15px", sm: "20px" }} color="black">
-            <Menu>
-              <MenuButton
-                as={Button}
+            <Image src="/logo.svg" alt="logo" className="logo" />
+            <UnorderedList
+              className="list"
+              display="flex"
+              gap={{ base: "4", sm: "6" }}
+              listStyleType="none"
+              alignItems="center"
+              fontWeight="700"
+            >
+              <Button
+                as={Link}
+                href="/"
                 bgColor="transparent"
                 fontSize={{ base: "15px", sm: "20px" }}
                 color="black"
                 fontWeight="700"
                 size={{ base: "sm", md: "md" }}
-                rightIcon={<RiArrowDownSLine />}
                 _hover={{
                   bg: "black",
                   color: "white",
                 }}
+                onClick={() => {
+                  handleToggle();
+                }}
               >
-                Products
-              </MenuButton>
-              <MenuList
-                borderRadius="12px"
-                border="none"
-                boxShadow="3px 3px 12px rgba(0, 0, 0, 0.35)"
+                Home
+              </Button>
+              <ListItem fontSize={{ base: "15px", sm: "20px" }} color="black">
+                <Menu>
+                  <MenuButton
+                    as={Button}
+                    bgColor="transparent"
+                    fontSize={{ base: "15px", sm: "20px" }}
+                    color="black"
+                    fontWeight="700"
+                    size={{ base: "sm", md: "md" }}
+                    rightIcon={<RiArrowDownSLine />}
+                    _hover={{
+                      bg: "black",
+                      color: "white",
+                    }}
+                  >
+                    Products
+                  </MenuButton>
+                  <MenuList
+                    borderRadius="12px"
+                    border="none"
+                    boxShadow="3px 3px 12px rgba(0, 0, 0, 0.35)"
+                  >
+                    <MenuItem
+                      as={Link}
+                      href="#products"
+                      _hover={{
+                        bg: "black",
+                        color: "white",
+                      }}
+                      color="black"
+                      onClick={() => {
+                        handleToggle();
+                      }}
+                      fontSize={{ base: "15px", sm: "20px" }}
+                    >
+                      <strong>For Women</strong>
+                    </MenuItem>
+                    <MenuItem
+                      as={Link}
+                      href="#products"
+                      _hover={{
+                        bg: "black",
+                        color: "white",
+                      }}
+                      color="black"
+                      onClick={() => {
+                        handleToggle();
+                      }}
+                      fontSize={{ base: "15px", sm: "20px" }}
+                    >
+                      <strong>For Men</strong>
+                    </MenuItem>
+                    <MenuItem
+                      as={Link}
+                      href="#products"
+                      _hover={{
+                        bg: "black",
+                        color: "white",
+                      }}
+                      color="black"
+                      onClick={() => {
+                        handleToggle();
+                      }}
+                      fontSize={{ base: "15px", sm: "20px" }}
+                    >
+                      <strong>For Kids</strong>
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              </ListItem>
+              <Button
+                as={Link}
+                href="/"
+                bgColor="transparent"
+                fontSize={{ base: "15px", sm: "20px" }}
+                size={{ base: "sm", md: "md" }}
+                color="black"
+                fontWeight="700"
+                _hover={{
+                  bg: "black",
+                  color: "white",
+                }}
+                onClick={() => {
+                  handleToggle();
+                }}
               >
-                <MenuItem
-                  as={Link}
-                  href="#products"
-                  _hover={{
-                    bg: "black",
-                    color: "white",
-                  }}
-                  color="black"
-                  onClick={() => {}}
-                  fontSize={{ base: "15px", sm: "20px" }}
-                >
-                  <strong>For Women</strong>
-                </MenuItem>
-                <MenuItem
-                  as={Link}
-                  href="#products"
-                  _hover={{
-                    bg: "black",
-                    color: "white",
-                  }}
-                  color="black"
-                  onClick={() => {}}
-                  fontSize={{ base: "15px", sm: "20px" }}
-                >
-                  <strong>For Men</strong>
-                </MenuItem>
-                <MenuItem
-                  as={Link}
-                  href="#products"
-                  _hover={{
-                    bg: "black",
-                    color: "white",
-                  }}
-                  color="black"
-                  onClick={() => {}}
-                  fontSize={{ base: "15px", sm: "20px" }}
-                >
-                  <strong>For Kids</strong>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          </ListItem>
-          <Button
-            as={Link}
-            href="/"
-            bgColor="transparent"
-            fontSize={{ base: "15px", sm: "20px" }}
-            size={{ base: "sm", md: "md" }}
-            color="black"
-            fontWeight="700"
-            _hover={{
-              bg: "black",
-              color: "white",
-            }}
-          >
-            About Us
-          </Button>
-          <Button
-            as={Link}
-            href="#contact"
-            bgColor="transparent"
-            fontSize={{ base: "15px", sm: "20px" }}
-            size={{ base: "sm", md: "md" }}
-            color="black"
-            fontWeight="700"
-            _hover={{
-              bg: "black",
-              color: "white",
-            }}
-          >
-            Contact
-          </Button>
-        </UnorderedList>
-      </Flex>
+                About Us
+              </Button>
+              <Button
+                as={Link}
+                href="#contact"
+                bgColor="transparent"
+                fontSize={{ base: "15px", sm: "20px" }}
+                size={{ base: "sm", md: "md" }}
+                color="black"
+                fontWeight="700"
+                _hover={{
+                  bg: "black",
+                  color: "white",
+                }}
+                onClick={() => {
+                  handleToggle();
+                }}
+              >
+                Contact
+              </Button>
+            </UnorderedList>
+          </Flex>
+        </Flex>
+      </Box>
+      <Button id="nav-toggle" className="nav-toggle" onClick={handleToggle}>
+        {showMenu ? <IoClose /> : <FiMenu />}
+      </Button>
       {!user ? (
         <Flex gap={2} align="center">
           <Button
@@ -197,7 +236,7 @@ function Header() {
           </Button>
         </Flex>
       ) : (
-        <Flex gap={8} align="center">
+        <Flex gap={8} align="center" className="cart-user">
           <Box position="relative">
             <Icon
               onClick={() => {

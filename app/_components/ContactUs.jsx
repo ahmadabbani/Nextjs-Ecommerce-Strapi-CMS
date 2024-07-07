@@ -28,12 +28,21 @@ import {
 function ContactUs() {
   return (
     <>
-      <Box mt={16} bgColor="black" id="contact">
+      <Box mt={16} bgColor="black" id="contact" pl={{ base: "4", md: "0" }}>
         <Heading color="white" p={4}>
           Contact Us
         </Heading>
-        <Flex id="contact" justify="space-around" pt={6}>
-          <Flex flexBasis="40%" direction="column" gap={2}>
+        <Flex
+          justify="space-around"
+          pt={6}
+          flexDirection={{ base: "column", md: "row" }}
+          gap={{ base: "8", md: "0" }}
+        >
+          <Flex
+            flexBasis="40%"
+            direction="column"
+            w={{ base: "60%", md: "auto" }}
+          >
             <Heading fontSize="20px" color="white">
               Get in touch
             </Heading>
@@ -135,16 +144,16 @@ function ContactUs() {
                 </Heading>
                 <UnorderedList listStyleType="none" m={0}>
                   <ListItem mb={2}>
-                    <Link href="">Home</Link>
+                    <Link href="#header">Home</Link>
                   </ListItem>
                   <ListItem mb={2}>
-                    <Link href="">About</Link>
+                    <Link href="#products">Products</Link>
                   </ListItem>
                   <ListItem mb={2}>
-                    <Link href="">Portfolio</Link>
+                    <Link href="/">About Us</Link>
                   </ListItem>
                   <ListItem mb={2}>
-                    <Link href="">Contact</Link>
+                    <Link href="#contact">Contact</Link>
                   </ListItem>
                 </UnorderedList>
               </Box>
